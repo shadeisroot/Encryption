@@ -40,7 +40,17 @@ public class Main {
     } // end of Enc()
 
     public static int decrypt(int number){
-
+        System.out.println("Enter 4 digit number");
+        Scanner objnew = new Scanner(System.in);
+        number = objnew.nextInt();
+        int res = 0;
+        for (int i = 0; i <= 3; i++){
+            int num = number % 10;
+            num = num + 3;
+            num = num % 10;
+            res += num * Math.pow(10, i);
+            System.out.println(res);
+        }
         return -1;
 
 
