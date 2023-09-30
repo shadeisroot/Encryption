@@ -8,22 +8,26 @@ public class Main {
         int choice = obj.nextInt();
 
         if (choice == 1){
-            System.out.println(enc(number));
-        } else if (choice == 2) {
-            decrypt(number);
+            System.out.println(encDec(number, false));
+        }
+        else if (choice == 2){
+            System.out.println(encDec(number, true));
         }
 
     } // end of Main
-
-    public static int enc(int number) {
+    public static int encDec(int number, boolean isdecrypt) {
+        int swapnum = 7;
+        int res = 0;
         Scanner obj = new Scanner(System.in);
         System.out.println("Enter 4 digit number");
         number = obj.nextInt();
+        if (isdecrypt){
+            swapnum = 3;
+        }
 
-        int res = 0;
         for (int i = 0; i <= 3; i++) {
             int num = number % 10; // Gives the last number of the row of digits
-            num = num + 7; // adds 7 to the number
+            num = num + swapnum; // adds 7 to the number
             num = num % 10; // gets the remainder
             number = number / 10; // Removes the last digit from the main row of digits
             res += num * Math.pow(10, i);
@@ -38,21 +42,4 @@ public class Main {
         } // end of number swap
         return res;
     } // end of Enc()
-
-    public static int decrypt(int number){
-        System.out.println("Enter 4 digit number");
-        Scanner objnew = new Scanner(System.in);
-        number = objnew.nextInt();
-        int res = 0;
-        for (int i = 0; i <= 3; i++){
-            int num = number % 10;
-            num = num + 3;
-            num = num % 10;
-            res += num * Math.pow(10, i);
-            System.out.println(res);
-        }
-        return -1;
-
-
-    } //end of Decrypt
 } // end of Class
